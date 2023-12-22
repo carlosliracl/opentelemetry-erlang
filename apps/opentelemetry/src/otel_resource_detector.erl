@@ -157,11 +157,13 @@ spawn_detector(Module, Ref) ->
 
 default_resource_attributes(Resource) ->
     ProgName = prog_name(),
-    ProcessResource = otel_resource:create([{?PROCESS_EXECUTABLE_NAME, ProgName} | process_attributes()]),
-    Resource1 = otel_resource:merge(ProcessResource, Resource),
-    Resource2 = add_service_name(Resource1, ProgName),
-    Resource3 = add_service_instance(Resource2),
-    add_telemetry_info(Resource3).
+    % ProcessResource = otel_resource:create([{?PROCESS_EXECUTABLE_NAME, ProgName} | process_attributes()]),
+    % Resource1 = otel_resource:merge(ProcessResource, Resource),
+    % Resource2 = add_service_name(Resource1, ProgName),
+    Resource2 = add_service_name(Resource, ProgName),
+    % Resource3 = add_service_instance(Resource2),
+    % add_telemetry_info(Resource2).
+    Resource2.
 
 process_attributes() ->
     OtpVsn = otp_vsn(),
